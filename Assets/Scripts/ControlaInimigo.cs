@@ -14,6 +14,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     private Vector3 direcao;
     private float contadorVagar;
     private float tempoEntrePosicoesAleatorias = 4;
+	public GameObject SangueZumbi;
 
 	// Use this for initialization
 	void Start () {
@@ -88,6 +89,11 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         int geraTipoZumbi = Random.Range(1, 28);
         transform.GetChild(geraTipoZumbi).gameObject.SetActive(true);
     }
+
+	public void ParticulaSangue (Vector3 posicao, Quaternion rotacao)
+	{
+		Instantiate(SangueZumbi, posicao, rotacao);  
+	}
 
     public void TomarDano(int dano)
     {
