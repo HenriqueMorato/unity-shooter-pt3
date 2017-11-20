@@ -15,6 +15,8 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
     private float contadorVagar;
     private float tempoEntrePosicoesAleatorias = 4;
 	public GameObject SangueZumbi;
+	[HideInInspector]
+	public GeradorZumbis meuGerador;
 
 	// Use this for initialization
 	void Start () {
@@ -110,6 +112,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
 		movimentaInimigo.Morrer();
         ControlaAudio.instancia.PlayOneShot(SomDeMorte);
 		this.enabled = false;
+		meuGerador.DiminuirQuantidadeZumbis();
 		Destroy(gameObject, 2);
     }
 }
