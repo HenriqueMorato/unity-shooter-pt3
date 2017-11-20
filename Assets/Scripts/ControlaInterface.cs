@@ -64,4 +64,9 @@ public class ControlaInterface : MonoBehaviour {
     {
         SceneManager.LoadScene("game");
     }
+
+	public void JogarJogo ()
+	{
+		SceneManager.LoadScene("game");
+	}
 }
