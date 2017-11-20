@@ -106,7 +106,10 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
 
     public void Morrer()
     {
-        Destroy(gameObject);
+		animacaoInimigo.Morrer();
+		movimentaInimigo.Morrer();
         ControlaAudio.instancia.PlayOneShot(SomDeMorte);
+		this.enabled = false;
+		Destroy(gameObject, 2);
     }
 }
