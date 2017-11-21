@@ -12,6 +12,7 @@ public class ControlaInterface : MonoBehaviour {
     public Text TextoTempoDeSobrevivencia;
     public Text TextoPontuacaoMaxima;
     private float tempoPontuacaoSalvo;
+    public GameObject botaoSair;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,10 @@ public class ControlaInterface : MonoBehaviour {
         AtualizarSliderVidaJogador();
         Time.timeScale = 1;
         tempoPontuacaoSalvo = PlayerPrefs.GetFloat("PontuacaoMaxima");
+
+        #if UNITY_STANDALONE || UNITY_EDITOR
+            botaoSair.SetActive(true);
+        #endif
     }
 
     public void AtualizarSliderVidaJogador ()
@@ -69,4 +74,12 @@ public class ControlaInterface : MonoBehaviour {
 	{
 		SceneManager.LoadScene("game");
 	}
+
+    public void SairDoJogo ()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }
