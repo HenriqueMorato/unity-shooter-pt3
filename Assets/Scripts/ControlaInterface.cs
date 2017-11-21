@@ -12,7 +12,8 @@ public class ControlaInterface : MonoBehaviour {
     public Text TextoTempoDeSobrevivencia;
     public Text TextoPontuacaoMaxima;
     private float tempoPontuacaoSalvo;
-    public GameObject botaoSair;
+    private int quantideZumbisMortos;
+    public Text TextQuantideZumbisMortos;
 
 	// Use this for initialization
 	void Start () {
@@ -23,15 +24,17 @@ public class ControlaInterface : MonoBehaviour {
         AtualizarSliderVidaJogador();
         Time.timeScale = 1;
         tempoPontuacaoSalvo = PlayerPrefs.GetFloat("PontuacaoMaxima");
-
-        #if UNITY_STANDALONE || UNITY_EDITOR
-            botaoSair.SetActive(true);
-        #endif
     }
 
     public void AtualizarSliderVidaJogador ()
     {
         SliderVidaJogador.value = scriptControlaJogador.statusJogador.Vida;
+    }
+
+    public void AtualizarQuantidadeZumbisMortos ()
+    {
+        quantideZumbisMortos++;
+        TextQuantideZumbisMortos.text = string.Format("X {0}", quantideZumbisMortos);
     }
 
     public void GameOver ()

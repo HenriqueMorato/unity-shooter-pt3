@@ -26,7 +26,7 @@ public class Bala : MonoBehaviour {
         {
 			ControlaInimigo inimigo = objetoDeColisao.GetComponent<ControlaInimigo>();
 			inimigo.TomarDano(1);
-			inimigo.ParticulaSangue(transform.position, objetoDeColisao.transform.rotation);
+			inimigo.ParticulaSangue(transform.position, Quaternion.LookRotation(-transform.forward));
         }
 
         Destroy(gameObject);

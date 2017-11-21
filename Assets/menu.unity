@@ -4014,7 +4014,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741344465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -286.9, y: 147.32, z: 0}
+  m_LocalPosition: {x: -286.9, y: 172.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1404469366}
@@ -6057,7 +6057,7 @@ Prefab:
         type: 2}
       propertyPath: scriptControlaInterface
       value: 
-      objectReference: {fileID: 1320272345}
+      objectReference: {fileID: 0}
     - target: {fileID: 1884102019447498, guid: 4b3bb44effa49480d8d18049684cc33a, type: 2}
       propertyPath: m_Name
       value: Jogador
@@ -7124,7 +7124,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1320272340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 392.5, y: 185, z: 0}
+  m_LocalPosition: {x: 392.5, y: 210, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1264753675}
@@ -7148,13 +7148,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320272340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3204a26ec09df4ba98b5620e33791f, type: 3}
+  m_Script: {fileID: 11500000, guid: ff8648724e236471fa2b314779b523b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SliderVidaJogador: {fileID: 741344466}
-  PainelDeGameOver: {fileID: 1373191667}
-  TextoTempoDeSobrevivencia: {fileID: 463281174}
-  TextoPontuacaoMaxima: {fileID: 271271088}
   botaoSair: {fileID: 1527516233}
 --- !u!1001 &1327135882
 Prefab:
@@ -8502,7 +8498,7 @@ MonoBehaviour:
   MascaraChao:
     serializedVersion: 2
     m_Bits: 0
-  scriptControlaInterface: {fileID: 1320272345}
+  scriptControlaInterface: {fileID: 0}
   SomDeDano: {fileID: 8300000, guid: c664dfdae3a77954d806753678c2528b, type: 3}
   statusJogador: {fileID: 0}
 --- !u!114 &1665214593
