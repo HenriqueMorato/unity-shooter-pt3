@@ -17,6 +17,8 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
 	public GameObject SangueZumbi;
 	[HideInInspector]
 	public GeradorZumbis meuGerador;
+    public GameObject PrefabKitMedico;
+    private float porcentagemGerarKitMedico = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -113,6 +115,10 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         ControlaAudio.instancia.PlayOneShot(SomDeMorte);
 		this.enabled = false;
 		meuGerador.DiminuirQuantidadeZumbis();
+        if(Random.value <= porcentagemGerarKitMedico)
+        {
+            Instantiate(PrefabKitMedico, transform.position, Quaternion.identity);
+        }
 		Destroy(gameObject, 2);
     }
 }
