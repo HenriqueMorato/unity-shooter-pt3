@@ -118,11 +118,16 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
         ControlaAudio.instancia.PlayOneShot(SomDeMorte);
 		this.enabled = false;
 		meuGerador.DiminuirQuantidadeZumbis();
-        if(Random.value <= porcentagemGerarKitMedico)
+        VerificarGeracaoKitMedico(porcentagemGerarKitMedico);
+        scriptControlaInterface.AtualizarQuantidadeZumbisMortos();
+		Destroy(gameObject, 2);
+    }
+
+    void VerificarGeracaoKitMedico (float porcentagemGeracao)
+    {
+        if(Random.value <= porcentagemGeracao)
         {
             Instantiate(PrefabKitMedico, transform.position, Quaternion.identity);
         }
-        scriptControlaInterface.AtualizarQuantidadeZumbisMortos();
-		Destroy(gameObject, 2);
     }
 }

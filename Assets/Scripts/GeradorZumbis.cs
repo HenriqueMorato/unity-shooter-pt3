@@ -13,13 +13,13 @@ public class GeradorZumbis : MonoBehaviour {
     private GameObject jogador;
 	private float quantidadeMaximaZumbis = 2;
 	private float quantidadeZumbis;
-	private float tempoAumentarDificuldade = 30;
-	public float contadorDificuldade = 0;
+	private float tempoProximoAumentoDificuldade = 30;
+	private float tempoAumentarDificuldade = 0;
 
     private void Start()
     {
         jogador = GameObject.FindWithTag("Jogador");
-		contadorDificuldade = tempoAumentarDificuldade;
+		tempoAumentarDificuldade = tempoProximoAumentoDificuldade;
 		for (int i = 0; i < quantidadeMaximaZumbis; i++) {
 			StartCoroutine(GerarNovoZumbi());
 		}
@@ -28,9 +28,8 @@ public class GeradorZumbis : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if(Vector3.Distance(transform.position, 
-            jogador.transform.position) > 
-			DistanciaDoJogadorParaGeracao && quantidadeZumbis < quantidadeMaximaZumbis)
+        bool possoGerarZumbis = Vector3.Distance(transform.position, jogador.transform.position) > DistanciaDoJogadorParaGeracao;
+        if(possoGerarZumbis && quantidadeZumbis < quantidadeMaximaZumbis)
         {
             contadorTempo += Time.deltaTime;
 
@@ -41,10 +40,10 @@ public class GeradorZumbis : MonoBehaviour {
             }
         }  
 
-		if(Time.timeSinceLevelLoad > contadorDificuldade)
+		if(Time.timeSinceLevelLoad > tempoAumentarDificuldade)
 		{
 
-			contadorDificuldade = Time.timeSinceLevelLoad + tempoAumentarDificuldade;
+			tempoAumentarDificuldade = Time.timeSinceLevelLoad + tempoProximoAumentoDificuldade;
 			quantidadeMaximaZumbis++;
 		}
     }

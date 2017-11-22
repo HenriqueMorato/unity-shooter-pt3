@@ -56,9 +56,9 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
         scriptControlaInterface.GameOver();
     }
 
-    public void CurarVida(int quantidadeCura)
+    public void CurarVida(int quantidadeDeCura)
     {
-        statusJogador.Vida += quantidadeCura;
+        statusJogador.Vida += quantidadeDeCura;
         if(statusJogador.Vida > statusJogador.VidaInicial)
         {
             statusJogador.Vida = statusJogador.VidaInicial;

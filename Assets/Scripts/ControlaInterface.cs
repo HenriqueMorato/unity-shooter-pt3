@@ -12,8 +12,8 @@ public class ControlaInterface : MonoBehaviour {
     public Text TextoTempoDeSobrevivencia;
     public Text TextoPontuacaoMaxima;
     private float tempoPontuacaoSalvo;
-    private int quantideZumbisMortos;
-    public Text TextQuantideZumbisMortos;
+    private int quantideDeZumbisMortos;
+    public Text TextoQuantideDeZumbisMortos;
 
 	// Use this for initialization
 	void Start () {
@@ -33,8 +33,8 @@ public class ControlaInterface : MonoBehaviour {
 
     public void AtualizarQuantidadeZumbisMortos ()
     {
-        quantideZumbisMortos++;
-        TextQuantideZumbisMortos.text = string.Format("X {0}", quantideZumbisMortos);
+        quantideDeZumbisMortos++;
+        TextoQuantideDeZumbisMortos.text = string.Format("X {0}", quantideDeZumbisMortos);
     }
 
     public void GameOver ()
