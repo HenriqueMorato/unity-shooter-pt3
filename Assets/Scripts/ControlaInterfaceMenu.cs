@@ -18,8 +18,14 @@ public class ControlaInterfaceMenu : MonoBehaviour {
 
 	public void JogarJogo ()
 	{
-		SceneManager.LoadScene("game");
+		StartCoroutine(MudarCena("game"));
 	}
+
+    IEnumerator MudarCena (string name)
+    {
+        yield return new WaitForSeconds(0.3f);
+        SceneManager.LoadScene(name);
+    }
 
     public void SairDoJogo ()
     {
