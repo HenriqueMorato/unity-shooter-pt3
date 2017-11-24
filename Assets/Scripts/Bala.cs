@@ -6,7 +6,6 @@ public class Bala : MonoBehaviour {
 
     public float Velocidade = 20;
     private Rigidbody rigidbodyBala;
-    public AudioClip SomDeMorte;
 
     private void Start()
     {
@@ -22,13 +21,19 @@ public class Bala : MonoBehaviour {
 
     void OnTriggerEnter(Collider objetoDeColisao)
     {
-        if(objetoDeColisao.tag == "Inimigo")
+        switch(objetoDeColisao.tag)
         {
-			ControlaInimigo inimigo = objetoDeColisao.GetComponent<ControlaInimigo>();
-			inimigo.TomarDano(1);
-            Quaternion inversaoDoSentidoDeRotacao = Quaternion.LookRotation(-transform.forward);
-			inimigo.ParticulaSangue(transform.position, inversaoDoSentidoDeRotacao);
+            case "Inimigo":
+			    ControlaInimigo inimigo = objetoDeColisao.GetComponent<ControlaInimigo>();
+			    inimigo.TomarDano(1);
+                Quaternion inversaoDoSentidoDeRotacao = Quaternion.LookRotation(-transform.forward);
+			    inimigo.ParticulaSangue(transform.position, inversaoDoSentidoDeRotacao);
+            break;
+            case "ChefeDeFase":
+                objetoDeColisao.GetComponent<ControlaChefe>().TomarDano(1);
+            break;
         }
+        
 
         Destroy(gameObject);
     }

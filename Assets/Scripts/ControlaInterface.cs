@@ -70,7 +70,7 @@ public class ControlaInterface : MonoBehaviour {
 
     public void Reiniciar ()
     {
-		StartCoroutine(MudarCena("game"));     
+		StartCoroutine(MudarCena("game"));
     }
 
 	public void JogarJogo ()
@@ -80,7 +80,8 @@ public class ControlaInterface : MonoBehaviour {
 
     IEnumerator MudarCena (string name)
     {
-        yield return new WaitForSeconds(0.3f);
+        //TODO: discutir porque o uso do unscaled time
+        yield return new WaitForSecondsRealtime(0.3f);       
         SceneManager.LoadScene(name);
     }
 
