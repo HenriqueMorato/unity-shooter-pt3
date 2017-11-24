@@ -14,6 +14,7 @@ public class ControlaInterface : MonoBehaviour {
     private float tempoPontuacaoSalvo;
     private int quantideDeZumbisMortos;
     public Text TextoQuantideDeZumbisMortos;
+    public Text TextoChefeAparece;
 
 	// Use this for initialization
 	void Start () {
@@ -92,4 +93,25 @@ public class ControlaInterface : MonoBehaviour {
             UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
+
+    public void AparecerTextoDoChefeCriado ()
+	{
+		StartCoroutine(DesaparecerTexto(2, TextoChefeAparece));
+	}
+
+	IEnumerator DesaparecerTexto (float tempoDeSumico, Text texto)
+	{
+		texto.color = new Color(texto.color.r, texto.color.g, texto.color.b, 1);
+		texto.gameObject.SetActive(true);
+		yield return new WaitForSeconds(1);	
+		while(texto.color.a > 0)
+		{
+			texto.color = new Color(texto.color.r, texto.color.g, texto.color.b, texto.color.a - (Time.deltaTime / tempoDeSumico));
+			if(texto.color.a <= 0)
+			{
+				texto.gameObject.SetActive(false);
+			}
+			yield return null;
+		}
+	}
 }

@@ -117,7 +117,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel
 		movimentaInimigo.Morrer();
         ControlaAudio.instancia.PlayOneShot(SomDeMorte);
 		this.enabled = false;
-		meuGerador.DiminuirQuantidadeZumbis();
+		meuGerador.DiminuirQuantidadeZumbisVivos();
         VerificarGeracaoKitMedico(porcentagemGerarKitMedico);
         scriptControlaInterface.AtualizarQuantidadeZumbisMortos();
 		Destroy(gameObject, 2);

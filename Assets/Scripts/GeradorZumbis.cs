@@ -11,8 +11,8 @@ public class GeradorZumbis : MonoBehaviour {
     private float distanciaDeGeracao = 3;
     private float DistanciaDoJogadorParaGeracao = 20;
     private GameObject jogador;
-	private float quantidadeMaximaZumbis = 2;
-	private float quantidadeZumbis;
+	private float quantidadeMaximaDeZumbisVivos = 2;
+	private float quantidadeDeZumbisVivos;
 	private float tempoProximoAumentoDificuldade = 30;
 	private float tempoAumentarDificuldade = 0;
 
@@ -20,7 +20,7 @@ public class GeradorZumbis : MonoBehaviour {
     {
         jogador = GameObject.FindWithTag("Jogador");
 		tempoAumentarDificuldade = tempoProximoAumentoDificuldade;
-		for (int i = 0; i < quantidadeMaximaZumbis; i++) {
+		for (int i = 0; i < quantidadeMaximaDeZumbisVivos; i++) {
 			StartCoroutine(GerarNovoZumbi());
 		}
     }
@@ -29,7 +29,7 @@ public class GeradorZumbis : MonoBehaviour {
     void Update () {
 
         bool possoGerarZumbis = Vector3.Distance(transform.position, jogador.transform.position) > DistanciaDoJogadorParaGeracao;
-        if(possoGerarZumbis && quantidadeZumbis < quantidadeMaximaZumbis)
+        if(possoGerarZumbis && quantidadeDeZumbisVivos < quantidadeMaximaDeZumbisVivos)
         {
             contadorTempo += Time.deltaTime;
 
@@ -44,7 +44,7 @@ public class GeradorZumbis : MonoBehaviour {
 		{
 
 			tempoAumentarDificuldade = Time.timeSinceLevelLoad + tempoProximoAumentoDificuldade;
-			quantidadeMaximaZumbis++;
+			quantidadeMaximaDeZumbisVivos++;
 		}
     }
 
@@ -68,12 +68,12 @@ public class GeradorZumbis : MonoBehaviour {
 
 		ControlaInimigo zumbi = Instantiate(Zumbi, posicaoDeCriacao, transform.rotation).GetComponent<ControlaInimigo>();
 		zumbi.meuGerador = this;
-		quantidadeZumbis++;
+		quantidadeDeZumbisVivos++;
     }
 
-	public void DiminuirQuantidadeZumbis ()
+	public void DiminuirQuantidadeZumbisVivos ()
 	{
-		quantidadeZumbis --;
+		quantidadeDeZumbisVivos --;
 	}
 
     Vector3 AleatorizarPosicao ()

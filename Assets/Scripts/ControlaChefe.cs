@@ -24,6 +24,7 @@ public class ControlaChefe : Inimigo, IMatavel
 		sliderVidaChefe = transform.GetComponentInChildren<Slider>();
 		sliderVidaChefe.value = sliderVidaChefe.maxValue = statusInimigo.VidaInicial;
 		AtualizarInterface();
+		scriptControlaInterface.AparecerTextoDoChefeCriado();
 	}
 
 	void Update()
