@@ -5,8 +5,14 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class ControlaChefe : Inimigo, IMatavel 
+public class ControlaChefe : MonoBehaviour, IMatavel 
 {
+	protected GameObject jogador;
+	protected MovimentoPersonagem movimentaInimigo;
+	protected AnimacaoPersonagem animacaoInimigo;
+	protected Status statusInimigo;
+	protected Vector3 direcao;
+	protected ControlaInterface scriptControlaInterface;
 	private NavMeshAgent agente;
 	public GameObject KitMedicoPrefab;
 
@@ -18,7 +24,12 @@ public class ControlaChefe : Inimigo, IMatavel
 
 	new void Start()
 	{
-		base.Start();
+		jogador = GameObject.FindWithTag("Jogador");
+		animacaoInimigo = GetComponent<AnimacaoPersonagem>();
+		movimentaInimigo = GetComponent<MovimentoPersonagem>();
+		statusInimigo = GetComponent<Status>();
+		scriptControlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
+
 		agente = GetComponent<NavMeshAgent>();
 		agente.speed = statusInimigo.Velocidade;
 		sliderVidaChefe = transform.GetComponentInChildren<Slider>();
